@@ -1,0 +1,24 @@
+CREATE OR REPLACE VIEW `round-cable-381420.cloud_solution.dm_cloud_user_sessions` 
+AS
+WITH session_ids AS (
+  SELECT *,
+    SUM(
+     CASE
+      WHEN 
+       TIMESTAMP_DIFF(event_timestamp, prev_timestamp, MINUTE) > 30 OR prev_timestamp IS NULL 
+     THEN 1 ELSE 0 END) 
+    
+    OVER(PARTITION BY user_id ORDER BY event_timestamp ASC) AS session_num
+  FROM `round-cable-381420.cloud_solution.deduplicated_logs`
+)
+
+SELECT 
+  user_id,
+  CONCAT(user_id, '_', session_num) AS session_id,
+  device_os,
+  button_color,
+  MIN(event_timestamp) AS session_start,
+  TIMESTAMP_DIFF(MAX(event_timestamp), MIN(event_timestamp), MINUTE) AS session_duration_minutes,
+  COUNT(event_name) AS actions_count
+FROM session_ids
+GROUP BY user_id, session_id, device_os, button_color;
