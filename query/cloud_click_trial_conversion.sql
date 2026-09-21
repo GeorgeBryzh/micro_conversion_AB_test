@@ -1,4 +1,5 @@
 CREATE OR REPLACE VIEW `round-cable-381420.cloud_solution.ab_click_trial_conversion` AS
+-- Calculates users completed micro-conversions (clicked on the free_trial) and their conversion rates. Methrics scoped per button color and device OS
 SELECT button_color, 
 device_os,
 COUNT(distinct user_id) AS total_users,
