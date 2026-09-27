@@ -1,1 +1,4 @@
 # micro_conversion_AB_test
+Висока конверсія (70%) у безкоштовний тріал не тотожна залученню цільового трафіку. Користувачі активують Free Trial та завантажують файли у наше хмарне сховище, але якщо вони не знаходять потрібної функціональності під час онбордингу — вони відвалюються (churn). Як наслідок, їхні дані залишаються на серверах, неефективно споживаючи ресурси хмарної інфраструктури та збільшуючи витрати компанії без зростання LTV.
+
+Hight micro-conversion isn't equal traffic engagement. Stakeholders knows, that users activate Free Trial and upload files in our Cloud Storage, but if they coudn't find core feature - they churn. As, result these inactive users cause the server resources consumed in the vain and increase Cloud Infrastructure costs without generating LTV. According to Spendark analytical reports infrastructures, cloud infrastructure spending crossed $675 billion globally in 2025 — and 27% of it was wasted.
